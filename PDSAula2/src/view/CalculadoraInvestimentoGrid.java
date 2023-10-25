@@ -15,6 +15,11 @@ import javax.swing.JOptionPane;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JDesktopPane;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import java.awt.Panel;
+import javax.swing.JMenu;
 
 public class CalculadoraInvestimentoGrid extends JFrame {
  
@@ -33,6 +38,9 @@ public class CalculadoraInvestimentoGrid extends JFrame {
 	private JTextField textDPmensal;
 	private JTextField textNumJuros;
 	private JTextField textJurosMes;
+	private JMenuBar menuBar;
+	private JMenu mnSubTexto;
+	private JMenuItem mntmSobre;
 
 	/**
 	 * Launch the application.
@@ -54,9 +62,26 @@ public class CalculadoraInvestimentoGrid extends JFrame {
 	 * Create the frame.
 	 */
 	public CalculadoraInvestimentoGrid() {
+		setTitle("CalcInvest");
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 350, 180);
+		
+		menuBar = new JMenuBar();
+		setJMenuBar(menuBar);
+		
+		mnSubTexto = new JMenu("Ajuda");
+		menuBar.add(mnSubTexto);
+		
+		mntmSobre = new JMenuItem("Sobre");
+		mntmSobre.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				InfoSobre sobreTela = new InfoSobre();
+				sobreTela.setVisible(true);
+				
+			}
+		});
+		mnSubTexto.add(mntmSobre);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
@@ -105,11 +130,14 @@ public class CalculadoraInvestimentoGrid extends JFrame {
 		btnCalcular = new JButton("Calcular");
 		btnCalcular.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				float a = Float.valueOf(textDPmensal.getText());
-				float j = Float.valueOf(textDPmensal.getText());
+				
+				float a = Float.valueOf(textNumJuros.getText());
+				float j = Float.valueOf(textJurosMes.getText());
 				float dm = Float.valueOf(textDPmensal.getText());
+				
 				Investimento c = new Investimento(a,j,dm);
 				float calculaTotal =c.calculaTotal();
+				
 				JOptionPane.showMessageDialog(null, "Total investido + Juros R$ : " + calculaTotal);
 			}
 		});
