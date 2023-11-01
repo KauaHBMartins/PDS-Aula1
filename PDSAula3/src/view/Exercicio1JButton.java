@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 
 import model.CalculoBaseAltura;
 import javax.swing.JRadioButton;
+import javax.swing.ButtonGroup;
 
 public class Exercicio1JButton extends JFrame {
 
@@ -21,6 +22,7 @@ public class Exercicio1JButton extends JFrame {
 	private JPanel contentPane;
 	private JTextField textBase;
 	private JTextField textAltura;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -89,10 +91,12 @@ public class Exercicio1JButton extends JFrame {
 		contentPane.add(lblNomebase);
 		
 		JRadioButton rdbtnRadioArea = new JRadioButton("Area");
+		buttonGroup.add(rdbtnRadioArea);
 		rdbtnRadioArea.setBounds(57, 133, 109, 23);
 		contentPane.add(rdbtnRadioArea);
 		
 		JRadioButton rdbtnRadioPerimetro = new JRadioButton("Perímetro");
+		buttonGroup.add(rdbtnRadioPerimetro);
 		rdbtnRadioPerimetro.setBounds(242, 133, 109, 23);
 		contentPane.add(rdbtnRadioPerimetro);
 		
@@ -111,11 +115,9 @@ public class Exercicio1JButton extends JFrame {
 				if(rdbtnRadioArea.isSelected()) {
 					float area= c.CalcularAREA(Base, Altura);
 					lblResultado.setText("Área: " + area);
-					JOptionPane.showMessageDialog(null, "Opção 1 Selecionada");
 					
 				}else if(rdbtnRadioPerimetro.isSelected()) {
 					float perimetro= c.CalcularPERIMETRO(Base, Altura);
-					JOptionPane.showMessageDialog(null, "Opção 2 Selecionada");
 					lblResultado.setText("Perímetro: " + perimetro);
 				}
 			}
