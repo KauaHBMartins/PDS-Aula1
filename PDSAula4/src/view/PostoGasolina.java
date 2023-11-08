@@ -25,6 +25,8 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.FocusAdapter;
 import java.awt.event.FocusEvent;
+import javax.swing.DefaultComboBoxModel;
+import model.Combobox;
 
 public class PostoGasolina extends JFrame {
 
@@ -196,6 +198,7 @@ public class PostoGasolina extends JFrame {
 		panelTabelaAbastecimento.add(lblNewLabel_8);
 		
 		JComboBox comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(Combobox.values()));
 		panelTabelaAbastecimento.add(comboBox);
 		
 		JLabel lblNewLabel_9 = new JLabel("Quantidade Litros:");
