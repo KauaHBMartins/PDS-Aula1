@@ -2,16 +2,58 @@ package model;
 
 public class Calculos {
 
-	public Float oleo500 (float valor, float quantidade) {
-		float resultado;
-		resultado = valor * quantidade;
+	public float ValorDiesel,ValorComum,ValorAditivada,ValorEtanol,Valor500ml,Valor1l,Quanti500ml,Quanti1l,Total1l,Total500ml,TotalCombustivel,TotalOleo;
+	public String Total;
+	
+	
+	
+	public String Diesel(float QuantidadeLitro) {
+		String resultado=String.valueOf(ValorDiesel*QuantidadeLitro);
+		TotalCombustivel=Float.valueOf(resultado);
+		return resultado;
+	}
+	public String Comum(float QuantidadeLitro) {
+		String resultado=String.valueOf(ValorComum*QuantidadeLitro);
+		TotalCombustivel=Float.valueOf(resultado);
+		return resultado;
+	}
+	public String Aditivada(float QuantidadeLitro) {
+		String resultado=String.valueOf(ValorAditivada*QuantidadeLitro);
+		TotalCombustivel=Float.valueOf(resultado);
+		return resultado;
+	}
+	public String Etanol(float QuantidadeLitro) {
+		String resultado=String.valueOf(ValorEtanol*QuantidadeLitro);
+		TotalCombustivel=Float.valueOf(resultado);
 		return resultado;
 	}
 	
-	public Float oleo1L (float valor, float quantidade) {
-		float resultado;
-		resultado = valor * quantidade;
+	
+	public String Class500ml() {
+		String resultado=String.valueOf(Quanti500ml*Valor500ml);
+		Total500ml=Float.valueOf(resultado);
 		return resultado;
+	}
+	public String Class1l() {
+		String resultado=String.valueOf(Quanti1l*Valor1l);
+		Total1l=Float.valueOf(resultado);
+		return resultado;
+	}
+	
+	
+	public String ValorTotalOleo() {
+		String resultado=String.valueOf(Total1l+Total500ml);
+		TotalOleo=Float.valueOf(resultado);
+		return resultado;
+	}
+	public String TotalVista() {
+		String resultadoT=String.valueOf(TotalCombustivel+TotalOleo);
+		resultadoT=Total;
+		return resultadoT;
+	}
+	public String TotalPrazo() {
+		String resultadoT=String.valueOf((((TotalCombustivel+TotalOleo)*0.10)+TotalCombustivel+TotalOleo));
+		return resultadoT;
 	}
 
 }
