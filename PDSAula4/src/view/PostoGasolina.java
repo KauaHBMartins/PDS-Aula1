@@ -4,9 +4,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import java.awt.GridLayout;
-import javax.swing.JSplitPane;
 import javax.swing.border.TitledBorder;
 
 import model.Calculos;
@@ -18,8 +16,6 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.JComboBox;
 import javax.swing.JRadioButton;
-import java.awt.FlowLayout;
-import java.awt.GridBagLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -189,11 +185,11 @@ public class PostoGasolina extends JFrame {
 		
 		JLabel lblValor500 = new JLabel("-");
 		lblValor500.setHorizontalAlignment(SwingConstants.CENTER);
-		panelOleoMotor.add(lblValor500);
+	
 		
 		JLabel lblValorTotal = new JLabel("-");
 		lblValorTotal.setHorizontalAlignment(SwingConstants.CENTER);
-		panelOleoMotor.add(lblValorTotal);
+	
 		
 		textQuantidade500 = new JTextField();
 		textQuantidade500.addFocusListener(new FocusAdapter() {
@@ -206,7 +202,9 @@ public class PostoGasolina extends JFrame {
 		});
 		panelOleoMotor.add(textQuantidade500);
 		textQuantidade500.setColumns(10);
-		
+		panelOleoMotor.add(lblValor500);
+		panelOleoMotor.add(lblValorTotal);
+	
 		JLabel lblNewLabel_4 = new JLabel("Frascos de 1L");
 		lblNewLabel_4.setHorizontalAlignment(SwingConstants.CENTER);
 		panelOleoMotor.add(lblNewLabel_4);
@@ -226,6 +224,9 @@ public class PostoGasolina extends JFrame {
 		});
 		panelOleoMotor.add(textQuantidade1);
 		textQuantidade1.setColumns(10);
+		
+		
+		panelOleoMotor.add(lblValor1);
 		
 		JPanel panel_5_1 = new JPanel();
 		panelOleoMotor.add(panel_5_1);
@@ -247,7 +248,6 @@ public class PostoGasolina extends JFrame {
 		
 		JLabel lblTotalComb = new JLabel("-");
 		lblTotalComb.setHorizontalAlignment(SwingConstants.CENTER);
-		panelTabelaAbastecimento.add(lblTotalComb);
 		
 		textQuantidadeDeLitros = new JTextField();
 		textQuantidadeDeLitros.addFocusListener(new FocusAdapter() {
@@ -274,7 +274,7 @@ public class PostoGasolina extends JFrame {
 		
 		JLabel lblNewLabel_7 = new JLabel("Total Combustivel:");
 		panelTabelaAbastecimento.add(lblNewLabel_7);
-		
+		panelTabelaAbastecimento.add(lblTotalComb);
 		JPanel panelTabelaFormaDePagamento = new JPanel();
 		panelTabelaFormaDePagamento.setBorder(new TitledBorder(null, "Formas de Pagamento", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		getContentPane().add(panelTabelaFormaDePagamento, "cell 1 2,grow");
@@ -326,12 +326,15 @@ public class PostoGasolina extends JFrame {
 				else if(rdbtnPrazo.isSelected())
 				{
 					Integer dias=Integer.valueOf(textQuantidadeDeDias.getText());
-					if(dias<=9999)
+					if(dias<=30)
 					{
 					String resultadoT= c.TotalPrazo();
 					lblTotal.setText("R$ "+resultadoT);
 					}
-				
+					else if(dias>31) {
+						String resultadoT=c.TotalPrazo30();
+						lblTotal.setText("R$ "+resultadoT);
+						}
 				}
 			}
 		});

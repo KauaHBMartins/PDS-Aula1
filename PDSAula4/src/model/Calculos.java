@@ -47,12 +47,16 @@ public class Calculos {
 		return resultado;
 	}
 	public String TotalVista() {
-		String resultadoT=String.valueOf(TotalCombustivel+TotalOleo);
-		resultadoT=Total;
-		return resultadoT;
+		String resultadoT=String.valueOf((TotalCombustivel+TotalOleo)-((TotalCombustivel+TotalOleo)*0.10));
+		Total=resultadoT;
+		return Total;
 	}
 	public String TotalPrazo() {
-		String resultadoT=String.valueOf((((TotalCombustivel+TotalOleo)*0.10)+TotalCombustivel+TotalOleo));
+		String resultadoT=String.valueOf(TotalCombustivel+TotalOleo);
+		return resultadoT;
+	}
+	public String TotalPrazo30() {
+		String resultadoT=String.valueOf((TotalCombustivel+TotalOleo)+((TotalCombustivel+TotalOleo)*0.10));
 		return resultadoT;
 	}
 
