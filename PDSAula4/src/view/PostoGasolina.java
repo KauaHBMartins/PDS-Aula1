@@ -275,6 +275,7 @@ public class PostoGasolina extends JFrame {
 		JLabel lblNewLabel_7 = new JLabel("Total Combustivel:");
 		panelTabelaAbastecimento.add(lblNewLabel_7);
 		panelTabelaAbastecimento.add(lblTotalComb);
+
 		JPanel panelTabelaFormaDePagamento = new JPanel();
 		panelTabelaFormaDePagamento.setBorder(new TitledBorder(null, "Formas de Pagamento", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		getContentPane().add(panelTabelaFormaDePagamento, "cell 1 2,grow");
