@@ -140,6 +140,8 @@ public class Janela extends JFrame {
 				for (Pessoa pessoa : listaPessoas) {
 					if (pessoa.getCpfPessoa() == cpf) {
 						listaPessoas.remove(pessoa);
+						atualizarJTableModel();
+						limparCampos();
 					}
 				}
 
