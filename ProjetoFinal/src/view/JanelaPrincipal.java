@@ -6,6 +6,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
@@ -16,6 +17,12 @@ import model.comboBoxNacionailades;
 import net.miginfocom.swing.MigLayout;
 import javax.swing.ImageIcon;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
+
+import model.Pessoa;
+import javax.swing.SwingConstants;
 
 public class JanelaPrincipal extends JFrame {
 
@@ -32,6 +39,7 @@ public class JanelaPrincipal extends JFrame {
 	private JTextField textEndereço;
 	private JTextField textCidade;
 	private JTextField textCEP;
+	ArrayList<Pessoa> listaPessoas = new ArrayList<Pessoa>();
 
 	/**
 	 * Launch the application.
@@ -70,7 +78,7 @@ public class JanelaPrincipal extends JFrame {
 		panel_1.setBackground(new Color(229, 236, 238));
 		panel_1.setBorder(new TitledBorder(null, "Registrar-se", TitledBorder.CENTER, TitledBorder.TOP, null, null));
 		contentPane.add(panel_1, "cell 1 0,growy");
-		panel_1.setLayout(new MigLayout("", "[][][grow]", "[][][][][][][][][][][][][][][][][][][][][][][][]"));
+		panel_1.setLayout(new MigLayout("", "[][][grow]", "[][][][][][][][][][][][][][][][][][][][][][][][][]"));
 		
 		JLabel lblNewLabel = new JLabel("Nome Completo");
 		panel_1.add(lblNewLabel, "cell 2 0");
@@ -150,13 +158,121 @@ public class JanelaPrincipal extends JFrame {
 		panel_1.add(textCEP, "cell 2 21,growx");
 		textCEP.setColumns(10);
 		
-		JLabel lblNewLabel_11 = new JLabel("");
-		lblNewLabel_11.setIcon(new ImageIcon("C:\\Users\\Aluno\\eclipse-workspace\\ProjetoFinal\\src\\Imagens\\BotaoRegitrar.png"));
-		panel_1.add(lblNewLabel_11, "flowx,cell 2 23");
+		JLabel lblBotaoRegistrar = new JLabel("");
+		lblBotaoRegistrar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				String nome = textNomeCompleto.getText();
+				if(nome.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Nome é obrigatório!");
+					return ;
+				}
+				
+				String cpf= textCPF.getText();
+				int cpfInt =0;
+				cpfInt = Integer.parseInt(cpf);
+				if(cpf.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo CPF é obrigatório!");
+					return ;
+				}
+				try {
+					cpfInt = Integer.parseInt(cpf);
+				}catch(Exception ex) {
+					JOptionPane.showMessageDialog(null, "CPF Inválido! Digite apenas números");
+					return ;
+				}
+				
+				String email = textEmail.getText();
+				if(email.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Email é obrigatório!");
+					return ;
+				}
+				
+				String telefone = textTelefone.getText();
+				int telefoneInt = 0;
+				if(telefone.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Telefone é obrigatório!");
+					return ;
+				}
+				try {
+					telefoneInt = Integer.parseInt(telefone);
+				}catch(Exception ex) {
+					JOptionPane.showMessageDialog(null, "CPF Inválido! Digite apenas números");
+					return ;
+				}
+				
+				String nascimento = textDataNascimento.getText();
+				int nascimentoInt = 0;
+				if(nascimento.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo CPF é obrigatório!");
+					return ;
+				}
+				try {
+					nascimentoInt = Integer.parseInt(nascimento);
+				}catch(Exception ex) {
+					JOptionPane.showMessageDialog(null, "CPF Inválido! Digite apenas números");
+					return ;
+				}
+				String endereco = textEndereço.getText();
+				if(endereco.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Endereço é obrigatório!");
+					return ;
+				}
+				String cidade = textCidade.getText();
+				if(cidade.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo Cidade é obrigatório!");
+					return ;
+				}
+				String cep = textCEP.getText();
+				int cepInt = 0;
+				if(cep.length() == 0) {
+					JOptionPane.showMessageDialog(null, "Campo CEP é obrigatório!");
+					return ;
+				}
+				try {
+					cepInt = Integer.parseInt(cep);
+				}catch(Exception ex) {
+					JOptionPane.showMessageDialog(null, "CEP Inválido! Digite apenas números");
+					return ;
+				}
+				
+				Pessoa p = new Pessoa();
+				p.setNome(nome);
+				p.setCpf(cpfInt);
+				p.setEmail(email);
+				p.setTelefone(telefoneInt);
+				p.setNascimento(nascimentoInt);
+				p.setEndereco(endereco);
+				p.setCidade(cidade);
+				p.setCep(cepInt);
+				
+				listaPessoas.add(p);
+				
+			}
+		});
+		lblBotaoRegistrar.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\PDS-Aula1\\ProjetoFinal\\src\\Imagens\\BotaoRegitrar.png"));
+		panel_1.add(lblBotaoRegistrar, "flowx,cell 2 23");
 		
-		JLabel lblNewLabel_13 = new JLabel("");
-		lblNewLabel_13.setIcon(new ImageIcon("C:\\Users\\Aluno\\eclipse-workspace\\ProjetoFinal\\src\\Imagens\\BotaoFechar.png"));
-		panel_1.add(lblNewLabel_13, "cell 2 23");
+		JLabel lblBotaoFechar = new JLabel("");
+		lblBotaoFechar.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				setVisible(false);
+			}
+		});
+		lblBotaoFechar.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\PDS-Aula1\\ProjetoFinal\\src\\Imagens\\BotaoFechar.png"));
+		panel_1.add(lblBotaoFechar, "cell 2 23");
+		
+		JLabel lblTabela = new JLabel("Mostrar os Registros");
+		lblTabela.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				
+			}
+		});
+		lblTabela.setHorizontalAlignment(SwingConstants.CENTER);
+		panel_1.add(lblTabela, "cell 2 24");
 	}
 
+	
 }

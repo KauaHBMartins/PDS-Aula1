@@ -17,7 +17,7 @@ public enum comboBoxNacionailades {
 	Salvadorenho,
 	Granadino,
 	Guatemalteco,
-	 Guianês,
+	Guianês,
 	Guianense,
 	Haitiano,
 	Hondurenho,
