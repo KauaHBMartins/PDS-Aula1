@@ -272,6 +272,7 @@ public class JanelaPrincipal extends JFrame {
 		lblTabela.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				
 				JanelaTabela janelaTabela = new JanelaTabela(listaPessoas);
 		        janelaTabela.setVisible(true);
 			}
@@ -279,6 +280,5 @@ public class JanelaPrincipal extends JFrame {
 		lblTabela.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblTabela, "cell 2 24");
 	}
-
 	
 }
