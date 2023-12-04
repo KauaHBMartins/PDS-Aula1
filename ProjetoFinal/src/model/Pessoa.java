@@ -10,6 +10,27 @@ public class Pessoa {
 	private String endereco;
 	private String cidade;
 	private int cep;
+	public Object getEstado() {
+		return estado;
+	}
+	public void setEstado(Object object) {
+		this.estado = object;
+	}
+	public Object getGenero() {
+		return genero;
+	}
+	public void setGenero(Object object) {
+		this.genero = object;
+	}
+	public Object getNacionalidade() {
+		return nacionalidade;
+	}
+	public void setNacionalidade(Object object) {
+		this.nacionalidade = object;
+	}
+	private Object estado;
+	private Object genero;
+	private Object nacionalidade;
 	
 	public String getNome() {
 		return nome;

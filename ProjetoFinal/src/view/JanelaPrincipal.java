@@ -25,6 +25,7 @@ import model.Pessoa;
 import javax.swing.SwingConstants;
 
 public class JanelaPrincipal extends JFrame {
+	 private ArrayList<Pessoa> listaPessoas = new ArrayList<>();
 	 private ChamaHospede chamaHospede;
 
 	/**
@@ -40,7 +41,6 @@ public class JanelaPrincipal extends JFrame {
 	private JTextField textEndereço;
 	private JTextField textCidade;
 	private JTextField textCEP;
-	ArrayList<Pessoa> listaPessoas = new ArrayList<Pessoa>();
 
 	/**
 	 * Launch the application.
@@ -247,8 +247,11 @@ public class JanelaPrincipal extends JFrame {
 				p.setEndereco(endereco);
 				p.setCidade(cidade);
 				p.setCep(cepInt);
+				p.setGenero(comboBoxGenero.getSelectedItem());
+				p.setEstado(comboBoxEstado.getSelectedItem());
+				p.setNacionalidade(comboBoxNacionalidade.getSelectedItem());
 				
-				 chamaHospede.adicionarUsuario(p);
+				chamaHospede.adicionarUsuario(p);
 				
 			}
 		});
@@ -269,7 +272,8 @@ public class JanelaPrincipal extends JFrame {
 		lblTabela.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
-				
+				JanelaTabela janelaTabela = new JanelaTabela(listaPessoas);
+		        janelaTabela.setVisible(true);
 			}
 		});
 		lblTabela.setHorizontalAlignment(SwingConstants.CENTER);
