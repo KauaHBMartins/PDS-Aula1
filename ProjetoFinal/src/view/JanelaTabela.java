@@ -1,6 +1,8 @@
 package view;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -9,22 +11,25 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import model.Pessoa;
 import model.PessoaJTableModel;
-import view.JanelaAlterarPessoa;
-import view.JanelaPrincipal;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 public class JanelaTabela extends JFrame {
-	 private JTable table;
-	    public ArrayList<Pessoa> listaPessoas;
-	 public JanelaTabela(ArrayList<Pessoa> listaPessoas) {
+	
+	private JTextField txtNome;
+	private JTextField txtCPF;
+	private JTable table;
+	public ArrayList<Pessoa> listaPessoas;
+	public JanelaTabela(ArrayList<Pessoa> listaPessoas) {
+	this.listaPessoas = listaPessoas;
 	 }
-	 
+	public void atualizarDados(ArrayList<Pessoa> pessoas) {
+	    this.listaPessoas = pessoas;
+	    atualizarJTableModel();
+	}
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
 
@@ -47,7 +52,9 @@ public class JanelaTabela extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public JanelaTabela() {
+	public JanelaTabela(Pessoa pessoaSelecionada) {
+		table = new JTable();
+		
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 800, 500);
 		contentPane = new JPanel();
@@ -70,7 +77,7 @@ public class JanelaTabela extends JFrame {
 				"Nome", "CPF", "Email", "Telefone", "Nascimento", "Endere\u00E7o", "Cidade", "CEP"
 			}
 		));
-		
+		DefaultTableModel model = (DefaultTableModel) table.getModel();
 		for (Pessoa pessoa : listaPessoas) {
             model.addRow(new Object[] {
                 pessoa.getNome(), pessoa.getCpf(), pessoa.getEmail(), pessoa.getTelefone(),
@@ -95,6 +102,19 @@ public class JanelaTabela extends JFrame {
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Salvar");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int linhaSelecionada = table.getSelectedRow();
+                Pessoa pessoaSelecionada = listaPessoas.get(linhaSelecionada);
+
+                pessoaSelecionada.setNome(txtNome.getText());
+                int cpfInt = Integer.parseInt(txtCPF.getText());
+                pessoaSelecionada.setCpf(cpfInt);
+
+                atualizarDadosPessoa(pessoaSelecionada);
+                dispose();
+			}
+		});
 		btnNewButton_1.setBounds(277, 400, 89, 23);
 		contentPane.add(btnNewButton_1);
 		
@@ -115,6 +135,10 @@ public class JanelaTabela extends JFrame {
 		contentPane.add(btnExcluir);
 	}
 
+	public JanelaTabela() {
+		// TODO Auto-generated constructor stub
+	}
+
 	private void atualizarJTableModel() {
 		table.setModel(new PessoaJTableModel(listaPessoas));
 		
@@ -124,4 +148,5 @@ public class JanelaTabela extends JFrame {
 		listaPessoas.set(linhaSelecionada, pessoa);
 		atualizarJTableModel();
 	}
+	
 }

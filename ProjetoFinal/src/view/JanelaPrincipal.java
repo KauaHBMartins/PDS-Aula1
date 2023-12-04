@@ -272,9 +272,10 @@ public class JanelaPrincipal extends JFrame {
 		lblTabela.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				JanelaTabela janelaTabela = new JanelaTabela();
+				janelaTabela.atualizarDados(listaPessoas);
+				janelaTabela.setVisible(true);
 				
-				JanelaTabela janelaTabela = new JanelaTabela(listaPessoas);
-		        janelaTabela.setVisible(true);
 			}
 		});
 		lblTabela.setHorizontalAlignment(SwingConstants.CENTER);

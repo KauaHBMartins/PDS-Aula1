@@ -1,10 +1,14 @@
 package model;
-
+import java.util.ArrayList;
 
 public class ChamaHospede {
     private static ChamaHospede instancia;
+    private ArrayList<Pessoa> listaPessoas;
+    
     private ChamaHospede() {
+        listaPessoas = new ArrayList<>();
     }
+    
     public static ChamaHospede getInstancia() {
         if (instancia == null) {
             instancia = new ChamaHospede();
@@ -17,7 +21,7 @@ public class ChamaHospede {
 
 	}
 	public void adicionarUsuario(Pessoa p) {
-		// TODO Auto-generated method stub
+		listaPessoas.add(p);
 		
 	}
 
