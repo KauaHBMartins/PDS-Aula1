@@ -20,11 +20,12 @@ import java.awt.Color;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
-
+import model.ChamaHospede;
 import model.Pessoa;
 import javax.swing.SwingConstants;
 
 public class JanelaPrincipal extends JFrame {
+	 private ChamaHospede chamaHospede;
 
 	/**
 	 * 
@@ -62,6 +63,7 @@ public class JanelaPrincipal extends JFrame {
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public JanelaPrincipal() {
+		chamaHospede = ChamaHospede.getInstancia();
 		setTitle("Registro");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 770, 667);
@@ -246,11 +248,11 @@ public class JanelaPrincipal extends JFrame {
 				p.setCidade(cidade);
 				p.setCep(cepInt);
 				
-				listaPessoas.add(p);
+				 chamaHospede.adicionarUsuario(p);
 				
 			}
 		});
-		lblBotaoRegistrar.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\PDS-Aula1\\ProjetoFinal\\src\\Imagens\\BotaoRegitrar.png"));
+		lblBotaoRegistrar.setIcon(new ImageIcon("C:\\Users\\kh-ma\\OneDrive\\Área de Trabalho\\PDS-Aula1\\ProjetoFinal\\src\\Imagens\\BotaoRegitrar.png"));
 		panel_1.add(lblBotaoRegistrar, "flowx,cell 2 23");
 		
 		JLabel lblBotaoFechar = new JLabel("");
@@ -260,7 +262,7 @@ public class JanelaPrincipal extends JFrame {
 				setVisible(false);
 			}
 		});
-		lblBotaoFechar.setIcon(new ImageIcon("C:\\Users\\Aluno\\Desktop\\PDS-Aula1\\ProjetoFinal\\src\\Imagens\\BotaoFechar.png"));
+		lblBotaoFechar.setIcon(new ImageIcon("C:\\Users\\kh-ma\\OneDrive\\Área de Trabalho\\PDS-Aula1\\ProjetoFinal\\src\\Imagens\\BotaoFechar.png"));
 		panel_1.add(lblBotaoFechar, "cell 2 23");
 		
 		JLabel lblTabela = new JLabel("Mostrar os Registros");
