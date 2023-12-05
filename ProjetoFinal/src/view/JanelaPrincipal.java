@@ -1,28 +1,28 @@
 package view;
 
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.util.ArrayList;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.TitledBorder;
+
+import model.Pessoa;
 import model.comboBoxEstados;
 import model.comboBoxGeneros;
 import model.comboBoxNacionailades;
 import net.miginfocom.swing.MigLayout;
-import javax.swing.ImageIcon;
-import java.awt.Color;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.util.ArrayList;
-import model.ChamaHospede;
-import model.Pessoa;
-import javax.swing.SwingConstants;
 
 public class JanelaPrincipal extends JFrame {
 

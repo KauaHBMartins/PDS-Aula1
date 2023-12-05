@@ -111,7 +111,7 @@ public class JanelaAlterarPessoa extends JFrame {
 				int cpfInt = Integer.parseInt(txtCPF.getText());
 				
 				pessoaSelecionada.setCpf(cpfInt);
-				estaJanela.atualizarDados(pessoaSelecionada);
+				
 				dispose();
 				
 			}
@@ -126,6 +126,8 @@ public class JanelaAlterarPessoa extends JFrame {
 		});
 		contentPane.add(btnNewButton_1, "cell 9 12");
 	}
+
+
 	
 
 	

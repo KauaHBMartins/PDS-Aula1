@@ -12,6 +12,10 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import model.Pessoa;
+import view.JanelaAlterarPessoa;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class JanelaTabela extends JFrame {
     /**
@@ -23,11 +27,11 @@ public class JanelaTabela extends JFrame {
 
     public JanelaTabela(ArrayList<Pessoa> listaPessoas) {
         this.listaPessoas = listaPessoas;
-        initialize();
+        initialize(null, null);
         atualizarDados(listaPessoas);
     }
 
-    private void initialize() {
+    private void initialize(Pessoa pessoaSelecionada, JanelaTabela estaJanela) {
         setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         setBounds(100, 100, 800, 500);
         JPanel contentPane = new JPanel();
@@ -62,6 +66,16 @@ public class JanelaTabela extends JFrame {
         contentPane.add(btnExcluir);
         
         JButton btnNewButton = new JButton("Alterar");
+        btnNewButton.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        		int linha = table.getSelectedRow();
+				Pessoa pessoaSelecionada = listaPessoas.get(linha);
+				
+				JanelaAlterarPessoa janelaAlterar = new JanelaAlterarPessoa(pessoaSelecionada, estaJanela);
+				janelaAlterar.setVisible(true);
+        		
+        	}
+        });
         btnNewButton.setBounds(400, 433, 379, 23);
         contentPane.add(btnNewButton);
     }
