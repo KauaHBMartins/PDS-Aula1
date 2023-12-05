@@ -25,8 +25,8 @@ import model.Pessoa;
 import javax.swing.SwingConstants;
 
 public class JanelaPrincipal extends JFrame {
-	 private ArrayList<Pessoa> listaPessoas = new ArrayList<>();
-	 private ChamaHospede chamaHospede;
+
+
 
 	/**
 	 * 
@@ -57,13 +57,17 @@ public class JanelaPrincipal extends JFrame {
 			}
 		});
 	}
+	  
 
+	
 	/**
 	 * Create the frame.
 	 */
 	@SuppressWarnings({ "unchecked", "rawtypes" })
+	
 	public JanelaPrincipal() {
-		chamaHospede = ChamaHospede.getInstancia();
+		ArrayList<Pessoa> listaPessoas = new ArrayList<>();
+		
 		setTitle("Registro");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 770, 667);
@@ -164,6 +168,7 @@ public class JanelaPrincipal extends JFrame {
 		lblBotaoRegistrar.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
+				Pessoa p = new Pessoa();
 				String nome = textNomeCompleto.getText();
 				if(nome.length() == 0) {
 					JOptionPane.showMessageDialog(null, "Campo Nome é obrigatório!");
@@ -238,7 +243,7 @@ public class JanelaPrincipal extends JFrame {
 					return ;
 				}
 				
-				Pessoa p = new Pessoa();
+				
 				p.setNome(nome);
 				p.setCpf(cpfInt);
 				p.setEmail(email);
@@ -251,7 +256,7 @@ public class JanelaPrincipal extends JFrame {
 				p.setEstado(comboBoxEstado.getSelectedItem());
 				p.setNacionalidade(comboBoxNacionalidade.getSelectedItem());
 				
-				chamaHospede.adicionarUsuario(p);
+				listaPessoas.add(p);
 				
 			}
 		});
@@ -269,15 +274,24 @@ public class JanelaPrincipal extends JFrame {
 		panel_1.add(lblBotaoFechar, "cell 2 23");
 		
 		JLabel lblTabela = new JLabel("Mostrar os Registros");
-		lblTabela.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mouseClicked(MouseEvent e) {
-				JanelaTabela janelaTabela = new JanelaTabela();
-				janelaTabela.atualizarDados(listaPessoas);
-				janelaTabela.setVisible(true);
-				
-			}
-		});
+	    lblTabela.addMouseListener(new MouseAdapter() {
+	        @Override
+	        public void mouseClicked(MouseEvent e) {
+	            mostrarRegistros();
+	            if (listaPessoas != null && !listaPessoas.isEmpty()) {
+	                JanelaTabela janela = new JanelaTabela(listaPessoas);
+	                janela.setVisible(true);
+	            } else {
+	                JOptionPane.showMessageDialog(null, "A lista de pessoas está vazia ou nula.");
+	            }
+	        }
+	        private void mostrarRegistros() {
+	            JanelaTabela janelaTabela = new JanelaTabela(listaPessoas); 
+	            janelaTabela.atualizarDados(listaPessoas);
+	            janelaTabela.setVisible(true);
+	        }
+
+	    });
 		lblTabela.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblTabela, "cell 2 24");
 	}

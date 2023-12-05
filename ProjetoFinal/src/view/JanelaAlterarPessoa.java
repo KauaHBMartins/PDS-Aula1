@@ -111,7 +111,7 @@ public class JanelaAlterarPessoa extends JFrame {
 				int cpfInt = Integer.parseInt(txtCPF.getText());
 				
 				pessoaSelecionada.setCpf(cpfInt);
-				estaJanela.atualizarDadosPessoa(pessoaSelecionada);
+				estaJanela.atualizarDados(pessoaSelecionada);
 				dispose();
 				
 			}
