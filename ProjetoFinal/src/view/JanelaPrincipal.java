@@ -23,6 +23,8 @@ import model.comboBoxEstados;
 import model.comboBoxGeneros;
 import model.comboBoxNacionailades;
 import net.miginfocom.swing.MigLayout;
+import java.awt.Font;
+import javax.swing.border.EtchedBorder;
 
 public class JanelaPrincipal extends JFrame {
 
@@ -70,30 +72,37 @@ public class JanelaPrincipal extends JFrame {
 		
 		setTitle("Registro");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 770, 667);
+		setBounds(100, 100, 1570, 806);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 
 		setContentPane(contentPane);
-		contentPane.setLayout(new MigLayout("", "[grow][grow]", "[grow]"));
+		contentPane.setLayout(new MigLayout("", "[][grow][grow]", "[grow]"));
 		
 		JPanel panel = new JPanel();
-		contentPane.add(panel, "cell 0 0,grow");
+		contentPane.add(panel, "cell 1 0,grow");
+		
+		JLabel lblNewLabel_11 = new JLabel("");
+		lblNewLabel_11.setIcon(new ImageIcon("C:\\Users\\kh-ma\\OneDrive\\Área de Trabalho\\PDS-Aula1\\ProjetoFinal\\src\\Imagens\\hotel-fioreze-centro 1 (1).png"));
+		panel.add(lblNewLabel_11);
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(229, 236, 238));
-		panel_1.setBorder(new TitledBorder(null, "Registrar-se", TitledBorder.CENTER, TitledBorder.TOP, null, null));
-		contentPane.add(panel_1, "cell 1 0,growy");
+		panel_1.setBorder(new TitledBorder(new EtchedBorder(EtchedBorder.LOWERED, new Color(255, 255, 255), new Color(160, 160, 160)), "Registrar-se", TitledBorder.CENTER, TitledBorder.TOP, null, new Color(0, 0, 0)));
+		contentPane.add(panel_1, "cell 2 0,growy");
 		panel_1.setLayout(new MigLayout("", "[][][grow]", "[][][][][][][][][][][][][][][][][][][][][][][][][]"));
 		
 		JLabel lblNewLabel = new JLabel("Nome Completo");
+		lblNewLabel.setFont(new Font("Noto Sans", Font.PLAIN, 15));
 		panel_1.add(lblNewLabel, "cell 2 0");
 		
 		textNomeCompleto = new JTextField();
+		textNomeCompleto.setToolTipText("");
 		panel_1.add(textNomeCompleto, "cell 2 1,growx");
 		textNomeCompleto.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("CPF");
+		lblNewLabel_1.setFont(new Font("Noto Sans", Font.PLAIN, 15));
 		panel_1.add(lblNewLabel_1, "cell 2 2");
 		
 		textCPF = new JTextField();
@@ -101,6 +110,7 @@ public class JanelaPrincipal extends JFrame {
 		textCPF.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Email");
+		lblNewLabel_2.setFont(new Font("Noto Sans", Font.PLAIN, 15));
 		panel_1.add(lblNewLabel_2, "cell 2 4");
 		
 		textEmail = new JTextField();
@@ -108,6 +118,7 @@ public class JanelaPrincipal extends JFrame {
 		textEmail.setColumns(10);
 		
 		JLabel lblNewLabel_3 = new JLabel("Telefone");
+		lblNewLabel_3.setFont(new Font("Noto Sans", Font.PLAIN, 15));
 		panel_1.add(lblNewLabel_3, "cell 2 6");
 		
 		textTelefone = new JTextField();
@@ -115,6 +126,7 @@ public class JanelaPrincipal extends JFrame {
 		textTelefone.setColumns(10);
 		
 		JLabel lblNewLabel_4 = new JLabel("Data de Nascimento");
+		lblNewLabel_4.setFont(new Font("Noto Sans", Font.PLAIN, 15));
 		panel_1.add(lblNewLabel_4, "cell 2 8");
 		
 		textDataNascimento = new JTextField();
@@ -122,20 +134,25 @@ public class JanelaPrincipal extends JFrame {
 		textDataNascimento.setColumns(10);
 		
 		JLabel lblNewLabel_5 = new JLabel("Gênero");
+		lblNewLabel_5.setFont(new Font("Noto Sans", Font.PLAIN, 15));
 		panel_1.add(lblNewLabel_5, "cell 2 10");
 		
 		JComboBox comboBoxGenero = new JComboBox();
+		comboBoxGenero.setFont(new Font("Noto Sans", Font.PLAIN, 15));
 		comboBoxGenero.setModel(new DefaultComboBoxModel(comboBoxGeneros.values()));
 		panel_1.add(comboBoxGenero, "cell 2 11,growx");
 		
 		JLabel lblNewLabel_6 = new JLabel("Nacionalidade");
+		lblNewLabel_6.setFont(new Font("Noto Sans", Font.PLAIN, 15));
 		panel_1.add(lblNewLabel_6, "cell 2 12");
 		
 		JComboBox comboBoxNacionalidade = new JComboBox();
+		comboBoxNacionalidade.setFont(new Font("Noto Sans", Font.PLAIN, 15));
 		comboBoxNacionalidade.setModel(new DefaultComboBoxModel(comboBoxNacionailades.values()));
 		panel_1.add(comboBoxNacionalidade, "cell 2 13,growx");
 		
 		JLabel lblNewLabel_7 = new JLabel("Endereço");
+		lblNewLabel_7.setFont(new Font("Noto Sans", Font.PLAIN, 15));
 		panel_1.add(lblNewLabel_7, "cell 2 14");
 		
 		textEndereço = new JTextField();
@@ -143,6 +160,7 @@ public class JanelaPrincipal extends JFrame {
 		textEndereço.setColumns(10);
 		
 		JLabel lblNewLabel_8 = new JLabel("Cidade");
+		lblNewLabel_8.setFont(new Font("Noto Sans", Font.PLAIN, 15));
 		panel_1.add(lblNewLabel_8, "cell 2 16");
 		
 		textCidade = new JTextField();
@@ -150,14 +168,17 @@ public class JanelaPrincipal extends JFrame {
 		textCidade.setColumns(10);
 		
 		JLabel lblNewLabel_9 = new JLabel("Estado");
+		lblNewLabel_9.setFont(new Font("Noto Sans", Font.PLAIN, 15));
 		panel_1.add(lblNewLabel_9, "cell 2 18");
 		
 		JComboBox comboBoxEstado = new JComboBox();
+		comboBoxEstado.setFont(new Font("Noto Sans", Font.PLAIN, 15));
 		comboBoxEstado.setModel(new DefaultComboBoxModel(comboBoxEstados.values()));
 		panel_1.add(comboBoxEstado, "cell 2 19,growx");
 	
 		
 		JLabel lblNewLabel_10 = new JLabel("CEP");
+		lblNewLabel_10.setFont(new Font("Noto Sans", Font.PLAIN, 15));
 		panel_1.add(lblNewLabel_10, "cell 2 20");
 		
 		textCEP = new JTextField();
@@ -274,16 +295,12 @@ public class JanelaPrincipal extends JFrame {
 		panel_1.add(lblBotaoFechar, "cell 2 23");
 		
 		JLabel lblTabela = new JLabel("Mostrar os Registros");
+		lblTabela.setFont(new Font("Noto Sans", Font.PLAIN, 13));
 	    lblTabela.addMouseListener(new MouseAdapter() {
 	        @Override
 	        public void mouseClicked(MouseEvent e) {
 	            mostrarRegistros();
-	            if (listaPessoas != null && !listaPessoas.isEmpty()) {
-	                JanelaTabela janela = new JanelaTabela(listaPessoas);
-	                janela.setVisible(true);
-	            } else {
-	                JOptionPane.showMessageDialog(null, "A lista de pessoas está vazia ou nula.");
-	            }
+	            
 	        }
 	        private void mostrarRegistros() {
 	            JanelaTabela janelaTabela = new JanelaTabela(listaPessoas); 
@@ -295,5 +312,4 @@ public class JanelaPrincipal extends JFrame {
 		lblTabela.setHorizontalAlignment(SwingConstants.CENTER);
 		panel_1.add(lblTabela, "cell 2 24");
 	}
-	
 }

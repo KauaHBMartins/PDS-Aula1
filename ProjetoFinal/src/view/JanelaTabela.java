@@ -1,5 +1,4 @@
 package view;
-
 import java.util.ArrayList;
 
 import javax.swing.JButton;
@@ -12,8 +11,6 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import model.Pessoa;
-import view.JanelaAlterarPessoa;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -48,12 +45,12 @@ public class JanelaTabela extends JFrame {
         table.setModel(new DefaultTableModel(
                 new Object[][]{},
                 new String[]{
-                        "Nome", "CPF", "Email", "Telefone", "Nascimento", "Endereço", "Cidade", "CEP"
+                        "Nome", "CPF", "Email", "Telefone", "Nascimento","Gênero","Nacionalidade", "Endereço", "Cidade","Estado", "CEP",
                 }
         ));
 
         JButton btnExcluir = new JButton("Excluir");
-        btnExcluir.setBounds(5, 433, 396, 23);
+        btnExcluir.setBounds(5, 433, 390, 23);
         btnExcluir.addActionListener(e -> {
             int idx_linha = table.getSelectedRow();
             if (idx_linha < 0) {
@@ -65,19 +62,14 @@ public class JanelaTabela extends JFrame {
         });
         contentPane.add(btnExcluir);
         
-        JButton btnNewButton = new JButton("Alterar");
-        btnNewButton.addActionListener(new ActionListener() {
+        JButton btnFechar = new JButton("Fechar");
+        btnFechar.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		int linha = table.getSelectedRow();
-				Pessoa pessoaSelecionada = listaPessoas.get(linha);
-				
-				JanelaAlterarPessoa janelaAlterar = new JanelaAlterarPessoa(pessoaSelecionada, estaJanela);
-				janelaAlterar.setVisible(true);
-        		
+        		setVisible(false);
         	}
         });
-        btnNewButton.setBounds(400, 433, 379, 23);
-        contentPane.add(btnNewButton);
+        btnFechar.setBounds(396, 433, 383, 23);
+        contentPane.add(btnFechar);
     }
 
     public void atualizarDados(ArrayList<Pessoa> pessoas) {
@@ -89,9 +81,9 @@ public class JanelaTabela extends JFrame {
         for (Pessoa pessoa : listaPessoas) {
             model.addRow(new Object[]{
                     pessoa.getNome(), pessoa.getCpf(), pessoa.getEmail(), pessoa.getTelefone(),
-                    pessoa.getNascimento(), pessoa.getEndereco(), pessoa.getCidade(), pessoa.getCep()
+                    pessoa.getNascimento(),pessoa.getGenero(),pessoa.getNacionalidade(), pessoa.getEndereco(), pessoa.getCidade(),pessoa.getEstado() ,pessoa.getCep()
             });
         }
-        System.out.println("Dados atualizados na tabela!");
     }
-}
+	}
+
